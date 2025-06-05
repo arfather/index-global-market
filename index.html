@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Global Market Index</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .blackboard {
+            background: #2c3e2d;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.02) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.02) 0%, transparent 50%);
+            border: 15px solid #8B4513;
+            border-radius: 10px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .blackboard::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #654321, #8B4513, #A0522D);
+            border-radius: 15px;
+            z-index: -1;
+        }
+        
+        .title {
+            color: #FFD700;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            text-decoration: underline;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #90EE90;
+            border-radius: 10px;
+            background: rgba(144, 238, 144, 0.05);
+        }
+        
+        .section-title {
+            color: #90EE90;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #90EE90;
+            padding-bottom: 5px;
+        }
+        
+        .content {
+            color: #FFFFFF;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .index-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #FFD700;
+        }
+        
+        .index-name {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .index-details {
+            color: #FFFFFF;
+            margin-top: 5px;
+        }
+        
+        .factors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .factor-item {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #87CEEB;
+        }
+        
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        
+        .warning {
+            color: #FF6B6B;
+            font-weight: bold;
+        }
+        
+        .positive {
+            color: #98FB98;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .title {
+                font-size: 2em;
+            }
+            .blackboard {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blackboard">
+        <h1 class="title">📊 ANALISIS GLOBAL MARKET INDEX 📊</h1>
+        
+        <div class="section">
+            <div class="section-title">🌍 INDEKS UTAMA DUNIA</div>
+            <div class="grid">
+                <div class="index-box">
+                    <div class="index-name">S&P 500 (AS)</div>
+                    <div class="index-details">• 500 perusahaan terbesar AS<br>• Kapitalisasi pasar terbesar<br>• Barometer ekonomi global</div>
+                </div>
+                <div class="index-box">
+                    <div class="index-name">Dow Jones (AS)</div>
+                    <div class="index-details">• 30 perusahaan blue-chip<br>• Tertua & paling terkenal<br>• Price-weighted index</div>
+                </div>
+                <div class="index-box">
+                    <div class="index-name">NASDAQ (AS)</div>
+                    <div class="index-details">• Fokus teknologi<br>• Market cap-weighted<br>• Growth stocks oriented</div>
+                </div>
+                <div class="index-box">
+                    <div class="index-name">Nikkei 225 (Jepang)</div>
+                    <div class="index-details">• 225 perusahaan terbesar<br>• Ekonomi Asia Pasifik<br>• Price-weighted</div>
+                </div>
+                <div class="index-box">
+                    <div class="index-name">FTSE 100 (Inggris)</div>
+                    <div class="index-details">• 100 perusahaan terbesar UK<br>• Market cap-weighted<br>• Brexit impact significant</div>
+                </div>
+                <div class="index-box">
+                    <div class="index-name">DAX (Jerman)</div>
+                    <div class="index-details">• 40 perusahaan terbesar<br>• Ekonomi Eropa terbesar<br>• Performance index</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📈 INDIKATOR KUNCI ANALISIS</div>
+            <div class="content">
+                <div class="factors">
+                    <div class="factor-item">
+                        <strong class="highlight">Price Movement</strong><br>
+                        • Daily/Weekly/Monthly returns<br>
+                        • Volatility patterns<br>
+                        • Support & resistance levels
+                    </div>
+                    <div class="factor-item">
+                        <strong class="highlight">Volume Analysis</strong><br>
+                        • Trading volume trends<br>
+                        • Institutional flow<br>
+                        • Market liquidity
+                    </div>
+                    <div class="factor-item">
+                        <strong class="highlight">Technical Indicators</strong><br>
+                        • RSI, MACD, Moving Averages<br>
+                        • Bollinger Bands<br>
+                        • Momentum oscillators
+                    </div>
+                    <div class="factor-item">
+                        <strong class="highlight">Market Sentiment</strong><br>
+                        • Fear & Greed Index<br>
+                        • VIX (Volatility Index)<br>
+                        • Put/Call ratio
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🌐 FAKTOR FUNDAMENTAL</div>
+            <div class="content">
+                <div class="factors">
+                    <div class="factor-item">
+                        <strong class="positive">EKONOMI MAKRO</strong><br>
+                        • GDP Growth Rate<br>
+                        • Inflation Rate (CPI/PPI)<br>
+                        • Interest Rate Policy<br>
+                        • Employment Data
+                    </div>
+                    <div class="factor-item">
+                        <strong class="positive">KEBIJAKAN MONETER</strong><br>
+                        • Federal Reserve Policy<br>
+                        • ECB Decisions<br>
+                        • BoJ Interventions<br>
+                        • Quantitative Easing
+                    </div>
+                    <div class="factor-item">
+                        <strong class="warning">GEOPOLITIK</strong><br>
+                        • Trade Wars<br>
+                        • Military Conflicts<br>
+                        • Election Outcomes<br>
+                        • Diplomatic Relations
+                    </div>
+                    <div class="factor-item">
+                        <strong class="highlight">SEKTOR ANALYSIS</strong><br>
+                        • Technology dominance<br>
+                        • Energy transitions<br>
+                        • Healthcare innovations<br>
+                        • Financial sector health
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">⚠️ RISK FACTORS & OPPORTUNITIES</div>
+            <div class="content">
+                <div class="grid">
+                    <div>
+                        <strong class="warning">MAJOR RISKS:</strong><br>
+                        • <span class="warning">Inflation Persistence</span><br>
+                        • <span class="warning">Central Bank Hawkishness</span><br>
+                        • <span class="warning">Geopolitical Tensions</span><br>
+                        • <span class="warning">Supply Chain Disruptions</span><br>
+                        • <span class="warning">Energy Crisis</span><br>
+                        • <span class="warning">Debt Ceiling Issues</span>
+                    </div>
+                    <div>
+                        <strong class="positive">OPPORTUNITIES:</strong><br>
+                        • <span class="positive">AI & Technology Boom</span><br>
+                        • <span class="positive">Green Energy Transition</span><br>
+                        • <span class="positive">Emerging Markets Growth</span><br>
+                        • <span class="positive">Post-Pandemic Recovery</span><br>
+                        • <span class="positive">Digital Transformation</span><br>
+                        • <span class="positive">Infrastructure Investment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🎯 STRATEGI ANALISIS</div>
+            <div class="content">
+                <strong class="highlight">1. TOP-DOWN APPROACH:</strong><br>
+                Global Economy → Regional Markets → Sector Analysis → Individual Stocks<br><br>
+                
+                <strong class="highlight">2. CORRELATION ANALYSIS:</strong><br>
+                Monitor inter-market relationships, currency impacts, commodity correlations<br><br>
+                
+                <strong class="highlight">3. TIMING INDICATORS:</strong><br>
+                • <span class="positive">Bullish signals:</span> Breaking resistance, volume surge, positive divergence<br>
+                • <span class="warning">Bearish signals:</span> Breaking support, distribution patterns, negative divergence<br><br>
+                
+                <strong class="highlight">4. RISK MANAGEMENT:</strong><br>
+                Position sizing, diversification across regions, hedging strategies, stop-loss implementation
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📋 CHECKLIST HARIAN</div>
+            <div class="content">
+                ✅ Monitor overnight futures movement<br>
+                ✅ Check economic calendar for key releases<br>
+                ✅ Review central bank communications<br>
+                ✅ Analyze sector rotation patterns<br>
+                ✅ Track currency movements impact<br>
+                ✅ Monitor geopolitical developments<br>
+                ✅ Review institutional money flows<br>
+                ✅ Update risk assessment matrix
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🔗 SUMBER DATA TERPERCAYA</div>
+            <div class="content">
+                <div class="factors">
+                    <div class="factor-item">
+                        <strong class="highlight">GRATIS & REAL-TIME</strong><br>
+                        • <strong>Yahoo Finance:</strong> finance.yahoo.com<br>
+                        • <strong>Google Finance:</strong> google.com/finance<br>
+                        • <strong>Investing.com:</strong> investing.com<br>
+                        • <strong>MarketWatch:</strong> marketwatch.com
+                    </div>
+                    <div class="factor-item">
+                        <strong class="highlight">BERITA & ANALISIS</strong><br>
+                        • <strong>Reuters Markets:</strong> reuters.com/markets<br>
+                        • <strong>Bloomberg:</strong> bloomberg.com/markets<br>
+                        • <strong>CNBC World Markets:</strong> cnbc.com/world-markets<br>
+                        • <strong>Financial Times:</strong> ft.com/markets
+                    </div>
+                    <div class="factor-item">
+                        <strong class="highlight">DATA EKONOMI</strong><br>
+                        • <strong>IMF Data:</strong> imf.org/data<br>
+                        • <strong>World Bank:</strong> data.worldbank.org<br>
+                        • <strong>OECD Data:</strong> data.oecd.org<br>
+                        • <strong>Trading Economics:</strong> tradingeconomics.com
+                    </div>
+                    <div class="factor-item">
+                        <strong class="warning">PREMIUM/PAID</strong><br>
+                        • <strong>Bloomberg Terminal</strong><br>
+                        • <strong>Refinitiv Eikon</strong><br>
+                        • <strong>Nasdaq GIDS</strong><br>
+                        • <strong>S&P Capital IQ</strong>
+                    </div>
+                    <div class="factor-item">
+                        <strong class="highlight">CENTRAL BANKS</strong><br>
+                        • <strong>Federal Reserve:</strong> federalreserve.gov<br>
+                        • <strong>ECB:</strong> ecb.europa.eu<br>
+                        • <strong>Bank of Japan:</strong> boj.or.jp<br>
+                        • <strong>Bank of England:</strong> bankofengland.co.uk
+                    </div>
+                    <div class="factor-item">
+                        <strong class="highlight">TOOLS & CHARTS</strong><br>
+                        • <strong>TradingView:</strong> tradingview.com<br>
+                        • <strong>StockCharts:</strong> stockcharts.com<br>
+                        • <strong>Finviz:</strong> finviz.com<br>
+                        • <strong>TipRanks:</strong> tipranks.com
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px; padding: 15px; background: rgba(255, 215, 0, 0.1); border-radius: 8px; border-left: 4px solid #FFD700;">
+                    <strong class="highlight">💡 TIPS PENGGUNAAN:</strong><br>
+                    • Kombinasikan beberapa sumber untuk validasi data<br>
+                    • Gunakan Yahoo Finance/Google Finance untuk monitoring harian gratis<br>
+                    • Reuters/Bloomberg untuk berita dan analisis mendalam<br>
+                    • TradingView untuk analisis teknikal dan charting<br>
+                    • Pantau economic calendar di investing.com atau tradingeconomics.com
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
